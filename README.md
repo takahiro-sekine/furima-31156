@@ -7,55 +7,55 @@
 |kana_first_name   |string  |null:false                   |
 |kana_last_name    |string  |null:false                   |
 |email             |string  |null:false,unique: true      |
-|nickname          |string  |null:false,unique: true      |
+|nickname          |string  |null:false                   |
 |birthday          |date    |null:false                   |
 |encrypted_password|string  |null:false                   |
 
 ### Association
-- has_many: product 
-- has_many: product_purchase
-- has_many: product_history
+- has_many: item
+- has_many: purchase
 
-## product
 
-|     Column    |  Type  |            Options          |
-|---------------|--------|-----------------------------|
-|product_name   |stiring |null:false                   |
-|explanation    |text    |null:false                   |
-|category_id	  |integer |null:false                   |
-|status_id		  |integer |null:false                   |
-|burden_id		  |integer |null:false                   |
-|price				  |integer |null:false                   |
-|source_id		  |integer |null:false                   |
-|shippingdays_id|datetime|null:false                   |
+## item
+
+|     Column     |  Type  |            Options          |
+|----------------|--------|-----------------------------|
+|product_name    |string  |null:false                   |
+|explanation     |text    |null:false                   |
+|category_id	   |integer |null:false                   |
+|status_id		   |integer |null:false                   |
+|burden_id		   |integer |null:false                   |
+|price				   |integer |null:false                   |
+|source_id		   |integer |null:false                   |
+|shipping_days_id|integer |null:false                   |
 
 ### Association
 - belong_to: user
-- has_one: product_purchase
-- has_one: purchase_history
+- has_one: purchase
 
-## purchase_history
+## shipping
 
-|    Column    |  Type  |            Options          |
-|--------------|--------|-----------------------------|
-|postal_code	 |string  |null:false                   |
-|prefectures_id|integer |null:false                   |
-|municipalities|text    |null:false                   |
-|address			 |text    |null:false                   |
-|building_name |text    |                             |
-|phone_number	 |string  |null:false                   |
+|    Column    |  Type   |            Options          |
+|--------------|---------|-----------------------------|
+|postal_code	 |string   |null:false                   |
+|prefectures_id|integer  |null:false                   |
+|municipalities|text     |null:false                   |
+|address			 |text     |null:false                   |
+|building_name |text     |                             |
+|phone_number	 |string   |null:false                   |
+|purchase      |reference|null:false, foreign_key: true|
 ### Association
-- belong_to: user
-- belong_to: product
+- belong_to: purchase
 
 
-## product_history
+## purchase
 
-|    Column    |  Type   |  Options          |
-|--------------|---------|-------------------|
-|user       	 |reference|                   |
-|product       |reference|                   |
+|    Column    |  Type   |              Options          |
+|--------------|---------|-------------------------------|
+|user       	 |reference|null:false, foreign_key: true  |
+|item          |reference|null:false, foreign_key: true  |
 
 ### Association
 - belong_to: user 
-- belong_to: product
+- belong_to: item
+- has_one: shipping
