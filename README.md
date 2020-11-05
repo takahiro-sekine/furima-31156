@@ -1,18 +1,20 @@
 ## user
 
-| Column  |  Type  |            Options          |
-|---------|--------|-----------------------------|
-| name		|string  |null:false                   |
-|kana_name|string  |null:false                   |
-|email    |string  |null:false,unique: true      |
-|nickname |string  |null:false,unique: true      |
-|birthday |datetime|null:false                   |
-|password |string  |null:false                   |
+|     Column       |  Type  |            Options          |
+|------------------|--------|-----------------------------|
+|first_name        |string  |null:false                   |
+|last_name         |string  |null:false                   |
+|kana_first_name   |string  |null:false                   |
+|kana_last_name    |string  |null:false                   |
+|email             |string  |null:false,unique: true      |
+|nickname          |string  |null:false,unique: true      |
+|birthday          |date    |null:false                   |
+|encrypted_password|string  |null:false                   |
 
 ### Association
 - has_many: product 
 - has_many: product_purchase
-- belong_to: product_history
+- has_many: product_history
 
 ## product
 
@@ -30,9 +32,9 @@
 ### Association
 - belong_to: user
 - has_one: product_purchase
-- belong_to: purchase_history
+- has_one: purchase_history
 
-## product_purchase
+## purchase_history
 
 |    Column    |  Type  |            Options          |
 |--------------|--------|-----------------------------|
@@ -51,9 +53,9 @@
 
 |    Column    |  Type   |  Options          |
 |--------------|---------|-------------------|
-|user_id    	 |reference|                   |
-|product_id    |reference|                   |
+|user       	 |reference|                   |
+|product       |reference|                   |
 
 ### Association
-- has_many: user 
-- has_one: product
+- belong_to: user 
+- belong_to: product
