@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe "item/index.html.erb", type: :view do
+RSpec.describe Burden, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end
