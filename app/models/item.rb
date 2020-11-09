@@ -9,6 +9,6 @@ class Item < ApplicationRecord
 
   validates :product_name, :explanation, :price, :image, presence: true
   validates :category_id, :burden_id, :shipping_days_id, :source_id, :status_id, numericality: { other_than: 1 }
-  validates :price, numericality: { only_integer: true }
+  validates_inclusion_of :price, in: 300..9_999_999
   belongs_to :user
 end

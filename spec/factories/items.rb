@@ -14,5 +14,4 @@ FactoryBot.define do
       item.image.attach(io: File.open('public/images/test.image.png'), filename: 'test.image.png')
     end
   end
-
 end
