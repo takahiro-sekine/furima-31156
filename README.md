@@ -13,7 +13,7 @@
 
 ### Association
 - has_many: item
-- has_many: purchase
+- has_many: order
 
 
 ## item
@@ -31,9 +31,9 @@
 
 ### Association
 - belong_to: user
-- has_one: purchase
+- has_one: order
 
-## shipping
+## address
 
 |    Column    |  Type   |            Options          |
 |--------------|---------|-----------------------------|
@@ -45,10 +45,10 @@
 |phone_number	 |string   |null:false                   |
 |purchase      |reference|null:false, foreign_key: true|
 ### Association
-- belong_to: purchase
+- belong_to: order
 
 
-## purchase
+## order
 
 |    Column    |  Type   |              Options          |
 |--------------|---------|-------------------------------|
@@ -58,4 +58,4 @@
 ### Association
 - belong_to: user 
 - belong_to: item
-- has_one: shipping
+- has_one: address
