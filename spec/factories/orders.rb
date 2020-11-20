@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order do
-    user { "" }
-    item { "" }
+    user { '' }
+    item { '' }
   end
 end
