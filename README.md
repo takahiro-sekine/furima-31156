@@ -40,7 +40,7 @@
 |postal_code	 |string   |null:false                   |
 |prefectures_id|integer  |null:false                   |
 |municipalities|text     |null:false                   |
-|address			 |text     |null:false                   |
+|house_number	 |text     |null:false                   |
 |building_name |text     |                             |
 |phone_number	 |string   |null:false                   |
 |order         |reference|null:false, foreign_key: true|
